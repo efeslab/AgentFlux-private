@@ -1,0 +1,3 @@
+[submodule "orchestration_framework/rena-core/examples/mcp-servers/alpaca-mcp-server"]
+	path = orchestration_framework/rena-core/examples/mcp-servers/alpaca-mcp-server
+	url = https://github.com/alpacahq/alpaca-mcp-server.git
