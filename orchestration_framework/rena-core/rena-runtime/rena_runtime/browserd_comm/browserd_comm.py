@@ -9,11 +9,18 @@ from rena_runtime.browserd_comm.base import BaseBrowserdCommClient, BaseBrowserd
 
 logger = logging.getLogger("rena_runtime")
 
+max_bytes = 1024 * 1024 * 1024  # 1 GiB, pick a sensible value
 
 class BrowserdClient:
     def __init__(self, browserd_url: str):
         self._stub = browserd_pb2_grpc.BrowserdStub(
-            grpc.aio.insecure_channel(browserd_url)
+            grpc.aio.insecure_channel(
+                browserd_url,
+                options=[
+                    ("grpc.max_send_message_length", max_bytes),
+                    ("grpc.max_receive_message_length", max_bytes),
+                ],
+            )
         )
 
     def connect(

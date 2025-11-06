@@ -1,0 +1,24 @@
+container_comm_host = "0.0.0.0"
+container_comm_port = $RENA_PORT
+runtime_path = "../rena-runtime"
+
+[inference_engine]
+type = "openai"
+model = "$MODEL"
+max_tokens = 20480
+temperature = 0
+url = "$URL"
+
+
+[discovery]
+type = "static"
+
+[[discovery.apps]]
+name = "armor"
+path = "file://../examples/mcp-servers/alpaca-mcp-server"
+agent_protocol = "mcp"
+runtime = "python"
+command = "python"
+args = ["-m", "alpaca_mcp_server"]
+scripts = ["pip install ."]
+env = {"ALPACA_API_KEY" = "PKJGTUPALUDWI3UCMLUQIRPBEI", "ALPACA_SECRET_KEY" = "aELLYNh96fJwwSDayRZMTZLsZjUiygBqUXb5k1YrPxK"}

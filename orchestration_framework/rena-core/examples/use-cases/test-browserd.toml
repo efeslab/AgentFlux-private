@@ -1,11 +1,14 @@
-container_comm_host = "127.0.0.1"
+container_comm_host = "0.0.0.0"
 container_comm_port = 50051
 runtime_path = "../rena-runtime"
 
 [inference_engine]
 type = "openai"
-model = "gpt-4o-mini"
-max_tokens = 2048
+model = "gpt-5-mini"
+max_tokens = 20480
+temperature = 0
+url = "https://api.openai.com"
+
 
 [discovery]
 type = "static"
@@ -18,42 +21,3 @@ runtime = "python"
 command = "python"
 args = ["-m", "mcp_server_hello_world"]
 scripts = ["pip install ."]
-
-[[discovery.apps]]
-name = "brave_search"
-agent_protocol = "mcp"
-runtime = "nodejs"
-command = "npx"
-args = ["-y", "@modelcontextprotocol/server-brave-search"]
-env = {"BRAVE_API_KEY" = "<your-brave-api-key>"}
-
-[[discovery.apps]]
-name = "obsidian"
-path = "https://github.com/MarkusPfundstein/mcp-obsidian/tree/main"
-agent_protocol = "mcp"
-runtime = "python"
-command = "uvx"
-args = ["--from=.", "mcp-obsidian"]
-env = { "OBSIDIAN_API_KEY" = "<your-obsidian-api-key>", "OBSIDIAN_HOST" = "host.docker.internal", "OBSIDIAN_PORT" = "27124" }
-scripts = ["pip install ."]
-
-[[discovery.apps]]
-name = "playwright"
-agent_protocol = "mcp"
-runtime = "nodejs"
-command = "npx"
-args = ["@playwright/mcp@latest", "--headless", "--browser", "firefox"]
-
-[[discovery.apps]]
-name = "filesystem"
-agent_protocol = "mcp"
-runtime = "nodejs"
-command = "npx"
-args = ["-y", "@modelcontextprotocol/server-filesystem", "."]
-
-[[discovery.apps]]
-name = "repomix"
-agent_protocol = "mcp"
-runtime = "nodejs"
-command = "npx"
-args = ["-y", "repomix", "--mcp"]

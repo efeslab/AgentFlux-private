@@ -1,0 +1,6 @@
+Liquidate my position in 2 contracts of QQQ calls expiring next week.
+Place a market order to buy 1 call option on AAPL expiring next Friday.
+Get SPY call options expiring the week of June 16th, 2025, within 10% of market price.
+Place a bull call spread using AAPL June 6th options: one with a 190.00 strike and the other with a 200.00 strike.
+Show me recent cash dividends and stock splits for AAPL, MSFT, and GOOGL in the last 3 months.
+Get all corporate actions for SPY including dividends, splits, and any mergers in the past year.
